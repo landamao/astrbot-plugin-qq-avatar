@@ -2,3 +2,4 @@ name: QQ头像获取
 desc: 获取QQ用户头像，支持多种清晰度
 author: 砂糖酱
 version: 1.1.0
+repo: https://github.com/landamao/astrbot-plugin-qq-avatar
