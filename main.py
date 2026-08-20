@@ -86,6 +86,8 @@ class AvatarPlugin(Star):
         message_text = event.message_str.strip()
         if not message_text.startswith("头像"):
             return
+        if not (message_text == "头像" or message_text.startswith("头像 ")):
+            return
         event.stop_event()
         parts = message_text.split()
 
@@ -121,10 +123,11 @@ class AvatarPlugin(Star):
             yield event.plain_result("获取头像失败，请稍后再试")
             return
 
-        # 发送头像 - 使用消息链构造
+        # 发送头像 - 使用消息链构造，附带图片链接
         _, size_desc = self.SIZE_MAP.get(size, self.SIZE_MAP[5])
+        url = self._get_avatar_url(qq_id, size)
         chain = [
-            Plain(f"QQ: {qq_id}\n清晰度: {size_desc}\n"),
+            Plain(f"QQ: {qq_id}\n清晰度: {size_desc}\n链接: {url}\n"),
             Image.fromFileSystem(avatar_path)
         ]
         await event.send(event.chain_result(chain))
