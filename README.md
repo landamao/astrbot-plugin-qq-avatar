@@ -60,7 +60,7 @@ git clone https://github.com/landamao/astrbot-plugin-qq-avatar.git QQ头像获�
 
 ## 作者
 
-砂糖酱
+懒大猫
 
 ## License
 
